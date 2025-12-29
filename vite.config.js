@@ -6,7 +6,9 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: false,
-    minify: 'terser',
+    // Use the default esbuild minifier to avoid requiring the optional "terser" dependency
+    // during Netlify builds.
+    minify: 'esbuild',
     rollupOptions: {
       output: {
         manualChunks: {
